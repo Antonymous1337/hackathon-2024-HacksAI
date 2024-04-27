@@ -1,5 +1,6 @@
 column {
     display: inline-block;
+    column-count: 2;
 }
 body {
     width: 800px;
