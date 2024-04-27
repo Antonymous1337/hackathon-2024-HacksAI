@@ -1,0 +1,11 @@
+{
+    "name": "AI Slayer",
+    "version": "1.0.0",
+    "description": "Fight through the Automatons!",
+    "author": "Miro, Antony, Rory",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "AI Slayer"
+    }
+}
