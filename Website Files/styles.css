@@ -1,8 +1,72 @@
-columns {
-    display: inline-block;
-    column-count: 2;
+/* Saving Variables */
+:root {
+    --color-primary: #0f181a;
+    --color-secondary: #71ff2f;
+    --br-sm-2: 14px;
+    --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+  }
+
+/* General Page Setup */ 
+html  {
+    width: 400px;
+    height: 500px;
 }
-html {
-    width: 800px;
-    height: 600px;
+body {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}
+h1{
+    text-align: center;
+}
+
+
+/* Setting Up the columns  */
+.columns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 2px;
+    text-align: center;
+}
+.columns > div {
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    translate: width 2s;
+    border: solid 2px var(--color-secondary);
+}
+
+
+/* Setting Up the transition of the settings and info blocks  */
+.settings {
+    width: 200px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+.info {
+    width: 200px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+.settings:hover { 
+    width: 120%;
+    font-size: 20px;
+    transition: all 0.5s ease-in-out;
+    .icons {
+        height: 20%; 
+        width: 20%; 
+        left: 0; 
+        top: 0;
+    }
+}
+.info:hover { 
+    width: 120%;
+    font-size: 20px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Settings up images */ 
+
+.svg:hover {
+    background-size: 2px 3px; 
 }
