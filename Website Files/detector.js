@@ -41,11 +41,9 @@ class ScanObject
     if (this.#scanElement.className == "real") this.pass = true;
 
     if (this.pass) {
-      this.#percentage = Math.floor(Math.random() * 179) + 80// random integer 80 to 99
-      alert(this.#percentage)
+      this.#percentage = Math.floor(Math.random() * 20) + 80// random integer 80 to 99
     } else {
       this.#percentage = Math.floor(Math.random() * 80) // random integer 0 to 79
-      alert(this.#percentage)
     }
     this.#loading = false;
   }
@@ -61,7 +59,7 @@ $(window).on('mouseenter', function(e1)
 {
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
-    parent_element = document.elementFromPoint(x, y).parentElement;
+    parent_element = document.elementFromPoint(x, y).parentNode;
 
     if (element instanceof HTMLImageElement)
     {
