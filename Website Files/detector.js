@@ -14,9 +14,6 @@ class ScanObject
     this.#percentage = -1;
     this.#scanElement = element
 
-    //alert(this.#scanElement.className)
-
-    //alert("G")
     //#checkifreal(src)
     this.checkifrealprototype()
     //private setTooltip()
@@ -56,16 +53,16 @@ class ScanObject
 
 let scanList = [];
 var element;
+var parent_element;
 var isImage = false;
 var isHover = false;
 
-
-//passfail percentage
 $(window).on('mouseenter', function(e1)
 {
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
-    
+    parent_element = document.elementFromPoint(x, y).parentElement;
+
     if (element instanceof HTMLImageElement)
     {
     	isImage = true;
@@ -98,3 +95,4 @@ $(this).on('keypress', function(event) {
     //checkIfReal(element);
   }
 })
+
