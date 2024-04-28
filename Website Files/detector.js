@@ -14,9 +14,6 @@ class ScanObject
     this.#percentage = -1;
     this.#scanElement = element
 
-    //alert(this.#scanElement.className)
-
-    //alert("G")
     //#checkifreal(src)
     this.checkifrealprototype()
     //private setTooltip()
@@ -43,30 +40,29 @@ class ScanObject
   {
     if (this.#scanElement.className == "real") this.pass = true;
 
-    if (pass) {
+    if (this.pass) {
       this.#percentage = Math.floor(Math.random() * 179) + 80// random integer 80 to 99
+      alert(this.#percentage)
     } else {
       this.#percentage = Math.floor(Math.random() * 80) // random integer 0 to 79
+      alert(this.#percentage)
     }
-
     this.#loading = false;
   }
-
-
 }
 
 let scanList = [];
 var element;
+var parent_element;
 var isImage = false;
 var isHover = false;
 
-
-//passfail percentage
 $(window).on('mouseenter', function(e1)
 {
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
-    
+    parent_element = document.elementFromPoint(x, y).parentElement;
+
     if (element instanceof HTMLImageElement)
     {
     	isImage = true;
@@ -93,12 +89,10 @@ $(this).on('keypress', function(event) {
 
       //get image src attribute
       let src = element.src
-      //alert(element.className)
       scanList.push(new ScanObject(src, element))
   
-
-
     //alert('Its an image!');
     //checkIfReal(element);
   }
 })
+
