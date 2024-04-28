@@ -1,6 +1,7 @@
 const site = window.location.hostname;
 
-alert("Injector- JavaScript injected into " + site + ". WOOT!");
+//class AI{}
+//class Real{}
 
 var element;
 var isImage = false;
@@ -14,31 +15,45 @@ $(window).on('mouseenter', function(e1)
     if (element instanceof HTMLImageElement)
     {
     	isImage = true;
-      //console.log('Its an image!');
     }
     else
     {
     	isImage = false;
-      //console.log('Its not an image, idiot');
     }
     
     isHover = true;
-		//alert(isHover);
 });
 
 $(window).on('mouseleave', function()
 {
 	isHover = false;
-  //alert(isHover);
 });
 
 $(this).on('keypress', function(event) {
   if (event.keyCode == 115 && isHover == true && isImage == true) //https://www.toptal.com/developers/keycode/table
   {
     alert('Its a taco!');
+    //checkIfReal(element);
+  }
+  else if (event.keyCode == 115) //If prev is false but the key was right
+  {
+  	//alert('Its NOT a tako, baka!');
+  }
+})
+
+/*
+function checkIfReal(element)
+{
+  //Check class of image. if "real" then return true, else false
+  if (element instanceof Real)
+  {
+    return false;
+    //Maybe change tooltip?
   }
   else
   {
-  	alert('Its NOT a tako, baka!');
+    return true;
+    //Change tooltip?
   }
-})
+}
+*/
