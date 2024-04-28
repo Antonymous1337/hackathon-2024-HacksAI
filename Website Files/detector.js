@@ -1,10 +1,6 @@
+const site = window.location.hostname;
 
-
-/*
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.7.1.min.js'; // Check https://jquery.com/ for the current version
-document.getElementsByTagName('head')[0].appendChild(script);
-*/
+alert("Injector- JavaScript injected into " + site + ". WOOT!");
 
 var element;
 var isImage = false;
@@ -37,12 +33,12 @@ $(window).on('mouseleave', function()
 });
 
 $(this).on('keypress', function(event) {
-  if (event.keyCode == 13 && isHover == true && isImage == true) //https://www.toptal.com/developers/keycode/table
+  if (event.keyCode == 115 && isHover == true && isImage == true) //https://www.toptal.com/developers/keycode/table
   {
     alert('Its a taco!');
   }
   else
   {
-  	alert('Its NOT a tako, baka!')
+  	alert('Its NOT a tako, baka!');
   }
 })
