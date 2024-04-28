@@ -1,5 +1,10 @@
 const site = window.location.hostname;
 
+
+/* Miro's HTML / CSS Injecting */
+
+const Add_Custom_Style = css => document.head.appendChild(document.createElement("style")).innerHTML
+
 class ScanObject
 {
 
@@ -43,7 +48,7 @@ class ScanObject
   {
     if (this.#scanElement.className == "real") this.pass = true;
 
-    if (pass) {
+    if (this.pass) {
       this.#percentage = Math.floor(Math.random() * 179) + 80// random integer 80 to 99
     } else {
       this.#percentage = Math.floor(Math.random() * 80) // random integer 0 to 79
@@ -59,6 +64,7 @@ let scanList = [];
 var element;
 var isImage = false;
 var isHover = false;
+var parent_element;
 
 
 //passfail percentage
@@ -66,6 +72,7 @@ $(window).on('mouseenter', function(e1)
 {
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
+    parent_element = document.elementFromPoint(x,y).parentNode;
     
     if (element instanceof HTMLImageElement)
     {
@@ -77,7 +84,22 @@ $(window).on('mouseenter', function(e1)
     }
     
     isHover = true;
+    function Create_Custom_Element(tag, attr_tag, attr_name, value) {
+      const custom_element = document.createElement(tag)
+      custom_element.setAttribute(attr_tag, attr_name)
+      custom_element.innerHTML = value
+      document.a.append(custom_element)
+      console.log("You ran me!")
+    }
+
+    Create_Custom_Element(
+      "div",
+      "id",
+      "js-custom-element",
+      "My Custom JS Element 1",
+    )
 });
+
 
 $(window).on('mouseleave', function()
 {
@@ -98,7 +120,9 @@ $(this).on('keypress', function(event) {
   
 
 
-    //alert('Its an image!');
+    alert('Its an image!');
     //checkIfReal(element);
   }
 })
+
+
