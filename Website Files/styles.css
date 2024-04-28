@@ -18,6 +18,13 @@ body {
 h1{
     text-align: center;
 }
+p {
+    font-size: 13px;
+}
+input {
+    font-size: 13px;
+    color: var(--color-secondary);
+}
 
 
 /* Setting Up the columns  */
@@ -62,12 +69,8 @@ h1{
 
 /* Settings up Images */
 img {
-    width: 100px;
+    width: 50px;
 }
 .active {
-    width: 100px;
-}
-.inactive {
-    display:none;
-    width: 1px;
+    width: 50px;
 }

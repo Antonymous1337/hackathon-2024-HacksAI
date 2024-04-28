@@ -24,11 +24,33 @@
         <div class="info">
             <h2>Information</h2>
             <img class = "icon" src="icons&images/info_icon.png"></img> 
+            <p>
+                To use this software. You may hover your cursor over any image on your website of choice.
+            </p>
+            <p>
+                ---
+            </p>
+            <p>
+                Press 'S' on your keyboard to scan the image for possible facial deepfakes.
+            </p>
         </div><div class="settings">
             <h2>Settings</h2>
             <img class = "icon" src="icons&images/settings_icon.png"></img>
+            <form action="/action_page.php" method="get">
+                <label for="vol">Unhover Duration:</label>
+                <input type="range" id="vol" name="vol" min="0" max="10">
+              </form>
+              <form>
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Permanent Exit on Unhover</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" checked>
+                <label for="vehicle2"> Dark Mode</label><br>
+              </form>
         </div>
     </div>
+    <p>
+        This is a prototype, no AI implemented.
+    </p>
     <script src="front-end.js"></script>
     <script src="jquery-3.7.1.min.js"></script>
 </body>

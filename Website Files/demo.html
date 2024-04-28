@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,25 +8,81 @@
         .real, .fake {
             max-width: 300px;
             max-height: 500px;
+            position: relative;
+            /* border: white solid 2px; */
         }
-
+        /* .tableContainer {
+            position: fixed;
+        } */
         .rowContainer {
             display: flex;
             align-items: center;
             justify-content: space-evenly;
             height: 500px;
+            /* border: white solid 2px; */
         }
+        #js-image-element1{
+            position: absolute;
+            align-self: flex-start;
+            justify-self: right;
+            display: flex; width: 30px; height: 30px;
+            /* border: white solid 2px; */
+        }
+        #js-image-element2{
+            position: absolute;
+            align-self: flex-start;
+            justify-self: right;
+            display: flex; width: 30px; height: 30px;
+            /* border: white solid 2px; */
+        }
+        #js-image-element3{
+            position: absolute;
+            align-self: flex-start;
+            justify-self: right;
+            display: flex; width: 30px; height: 30px;
+            /* border: white solid 2px; */
+        }
+        #js-image-element4{
+            position: absolute;
+            align-self: flex-start;
+            justify-self: right;
+            display: flex; width: 30px; height: 30px;
+            /* border: white solid 2px; */
+        }
+        #img1 {
+            position: absolute;
+            display: flex; width: 30px; height: 30px;
+        }
+        .image_space1 {
+            position:relative; display: grid; place-items: center; 
+        }
+        .image_space2 { 
+            position:relative; display: grid; place-items: center; 
+        }
+        .image_space3 {
+            position:relative; display: grid; place-items: center; 
+        }
+        .image_space4 {
+            position:relative; display: grid; place-items: center; 
+        }
+
     </style>
 </head>
 <body style="background-color: black;">
     <div class="tableContainer">
         <div class="rowContainer">
-            <img class="real" src="./demoImages/real1.png">
-            <img class="fake" src="./demoImages/ai1.png">
+            <div class="image_space1">
+                <img class="real" src="./demoImages/real1.png">
+            </div><div class="image_space2">
+                <img class="fake" src="./demoImages/ai1.png">
+            </div>
         </div>
         <div class="rowContainer">
-            <img class="fake" src="./demoImages/ai2.png">
+            <div class="image_space3">
+                <img class="fake" src="./demoImages/ai2.png">
+            </div><div class="image_space4">
             <img class="real" src="./demoImages/real2.png">
+            </div>
         </div>
     </div>
     
