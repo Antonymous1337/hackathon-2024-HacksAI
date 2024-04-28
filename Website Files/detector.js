@@ -43,16 +43,15 @@ class ScanObject
   {
     if (this.#scanElement.className == "real") this.pass = true;
 
-    if (pass) {
+    if (this.pass) {
       this.#percentage = Math.floor(Math.random() * 179) + 80// random integer 80 to 99
+      alert(this.#percentage)
     } else {
       this.#percentage = Math.floor(Math.random() * 80) // random integer 0 to 79
+      alert(this.#percentage)
     }
-
     this.#loading = false;
   }
-
-
 }
 
 let scanList = [];
@@ -93,11 +92,8 @@ $(this).on('keypress', function(event) {
 
       //get image src attribute
       let src = element.src
-      //alert(element.className)
       scanList.push(new ScanObject(src, element))
   
-
-
     //alert('Its an image!');
     //checkIfReal(element);
   }
