@@ -29,15 +29,17 @@ $(window).on('mouseleave', function()
 	isHover = false;
 });
 
+//Integrate users who use shift and s to type things out if have time
 $(this).on('keypress', function(event) {
+  //alert(event.keyCode);
   if (event.keyCode == 115 && isHover == true && isImage == true) //https://www.toptal.com/developers/keycode/table
   {
-    alert('Its a taco!');
+    alert('Its an image!');
     //checkIfReal(element);
   }
   else if (event.keyCode == 115) //If prev is false but the key was right
   {
-  	//alert('Its NOT a tako, baka!');
+  	//alert('Its not an image!');
   }
 })
 
