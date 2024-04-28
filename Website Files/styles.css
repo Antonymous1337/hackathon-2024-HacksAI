@@ -32,6 +32,7 @@ h1{
     margin: 10px;
     padding: 10px;
     font-size: 15px;
+    height: 400px;
     translate: width 2s;
     border: solid 2px var(--color-secondary);
 }
@@ -52,12 +53,6 @@ h1{
     width: 120%;
     font-size: 20px;
     transition: all 0.5s ease-in-out;
-    .icons {
-        height: 20%; 
-        width: 20%; 
-        left: 0; 
-        top: 0;
-    }
 }
 .info:hover { 
     width: 120%;
@@ -69,4 +64,11 @@ h1{
 
 img{
     width: 100px;
+}
+.active {
+    width: 100px;
+}
+.inactive {
+    display:none;
+    width: 1px;
 }

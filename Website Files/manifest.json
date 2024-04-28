@@ -1,11 +1,12 @@
 {
-    "name": "AI Slayer",
+    "name": "Deepfake Defender",
     "version": "1.0.3",
     "description": "Fight through the Automatons!",
     "author": "Miro, Antony, Rory",
     "manifest_version": 3,
     "action": {
         "default_popup": "index.html",
-        "default_title": "AI Slayer"
+        "default_icon": "icons&images/deepfakeDefender_Icon.png",
+        "default_title": "Deepfake Defender"
     }
 }
