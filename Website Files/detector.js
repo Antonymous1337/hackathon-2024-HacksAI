@@ -1,5 +1,10 @@
 const site = window.location.hostname;
 
+
+/* Miro's HTML / CSS Injecting */
+
+const Add_Custom_Style = css => document.head.appendChild(document.createElement("style")).innerHTML
+
 class ScanObject
 {
 
@@ -54,6 +59,7 @@ var element;
 var parent_element;
 var isImage = false;
 var isHover = false;
+var parent_element;
 
 $(window).on('mouseenter', function(e1)
 {
@@ -71,7 +77,22 @@ $(window).on('mouseenter', function(e1)
     }
     
     isHover = true;
+    function Create_Custom_Element(tag, attr_tag, attr_name, value) {
+      const custom_element = document.createElement(tag)
+      custom_element.setAttribute(attr_tag, attr_name)
+      custom_element.innerHTML = value
+      document.a.append(custom_element)
+      console.log("You ran me!")
+    }
+
+    Create_Custom_Element(
+      "div",
+      "id",
+      "js-custom-element",
+      "My Custom JS Element 1",
+    )
 });
+
 
 $(window).on('mouseleave', function()
 {
@@ -89,8 +110,9 @@ $(this).on('keypress', function(event) {
       let src = element.src
       scanList.push(new ScanObject(src, element))
   
+
+
     //alert('Its an image!');
     //checkIfReal(element);
   }
 })
-
