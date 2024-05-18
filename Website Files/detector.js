@@ -55,9 +55,9 @@ function Create_Custom_Element(tag, attr_tag, attr_name, value) {
   img.src = s;
 
   img.setAttribute(attr_tag, attr_name)
-  custom_element.append(img);
-  //var src = custom_element
-  //s//rc.append(img);
+  //custom_element.append(img);
+  var src = custom_element
+  src.append(img);
 }
 
 /*
