@@ -9,17 +9,15 @@
         "default_icon": "icons&images/deepfakeDefender_Icon.png",
         "default_title": "Deepfake Defender"
     },
-    "web_accessable_resources": [
+    "web_accessible_resources": [
     {
-        "resources": ["icons&images/GreenCheckmark.png"],
-       "matches" : ["<all_urls>"]
+        "resources": ["icons&images/*.png"],
+        "matches" : ["<all_urls>"]
     }
     ],
     "content_scripts": [
         {
-            "matches": [
-                "<all_urls>"
-            ],
+            "matches": ["<all_urls>"],
             "js": ["jquery-3.7.1.min.js","detector.js"]
     }
     ]

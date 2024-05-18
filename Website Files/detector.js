@@ -41,6 +41,7 @@ Add_Custom_Style(`
 `)*/
 
 function Create_Custom_Element(tag, attr_tag, attr_name, value) {
+  
   const custom_element = document.createElement(tag)
   custom_element.setAttribute(attr_tag, attr_name)
   custom_element.innerHTML = value
@@ -53,12 +54,10 @@ function Create_Custom_Element(tag, attr_tag, attr_name, value) {
 
   img.src = s;
 
-  
-
   img.setAttribute(attr_tag, attr_name)
-  var src = custom_element
-  src.append(img);
-
+  custom_element.append(img);
+  //var src = custom_element
+  //s//rc.append(img);
 }
 
 /*
@@ -215,7 +214,6 @@ class ScanObject
 
 let scanList = [];
 var element;
-var parent_element;
 var isImage = false;
 var isHover = false;
 var parent_element;
