@@ -9,6 +9,12 @@
         "default_icon": "icons&images/deepfakeDefender_Icon.png",
         "default_title": "Deepfake Defender"
     },
+    "web_accessable_resources": [
+    {
+        "resources": ["icons&images/GreenCheckmark.png"],
+       "matches" : ["<all_urls>"]
+    }
+    ],
     "content_scripts": [
         {
             "matches": [

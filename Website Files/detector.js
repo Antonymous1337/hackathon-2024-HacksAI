@@ -1,5 +1,9 @@
 const site = window.location.hostname;
-
+/*
+    "web_accessable_resources": [
+        "resources": ["icons&images/GreenCheckmark.png"]
+    ],
+*/ 
 
 /* Miro's HTML / CSS Injecting */
 
@@ -35,6 +39,29 @@ Add_Custom_Style(`
 
 
 `)*/
+
+function Create_Custom_Element(tag, attr_tag, attr_name, value) {
+  const custom_element = document.createElement(tag)
+  custom_element.setAttribute(attr_tag, attr_name)
+  custom_element.innerHTML = value
+  parent_element.append(custom_element)
+  var img = document.createElement("img");
+
+  let s = chrome.runtime.getURL('/icons&images/GreenCheckmark.png')
+
+  console.log(s);
+
+  img.src = s;
+
+  
+
+  img.setAttribute(attr_tag, attr_name)
+  var src = custom_element
+  src.append(img);
+
+}
+
+/*
 const image_space1 = document.getElementsByClassName("image_space1")
 const image_space2 = document.getElementsByClassName("image_space2")
 const image_space3 = document.getElementsByClassName("image_space3")
@@ -80,7 +107,7 @@ function Create_Custom_Element4(tag, attr_tag, attr_name, value) {
   img.src = "icons&images/GreenCheckMark.png";
   var src = custom_element
   src.append(img);
-}
+}*/
 
 class ScanObject
 {
@@ -96,14 +123,65 @@ class ScanObject
     this.#percentage = -1;
     this.#scanElement = element
 
-    //#checkifreal(src)
-    this.checkifrealprototype()
+    this.checkIfReal(src)
+    //this.checkifrealprototype()
     //private setTooltip()
   }
 
-  /*
-  #checkIfReal(src)
+  
+  checkIfReal(src)
   {
+
+    let percentage = Math.round(Math.random()*100);
+
+    if (percentage >= 80) {
+      this.pass = true;
+      alert("It Passed! " + percentage)
+
+      /*
+      let custom_element = document.createElement(tag)
+      custom_element.setAttribute(attr_tag, attr_name)
+      custom_element.innerHTML = value
+      image_space1[0].append(custom_element)
+      var img = document.createElement("img");
+      img.src = "icons&images/GreenCheckMark.png";
+      img.setAttribute(attr_tag, attr_name)
+      var src = custom_element
+      src.append(img);
+      */
+
+    } else {
+      this.pass = false;
+      alert("It failed! " + percentage)
+
+
+      /*
+      const custom_element = document.createElement("div") // tag
+      custom_element.setAttribute("class", "detector_element") // attr_tag, attr_name
+      custom_element.innerHTML = "" // value
+
+      image_space2[0].append(custom_element) // the image that we have to put the checkmark or X over
+
+      var img = document.createElement("img");
+      img.src = "icons&images/RedX.png";
+      custom_element.append(img);*/
+
+      /*
+      function Create_Custom_Element3(tag, attr_tag, attr_name, value) {
+        const custom_element = document.createElement(tag)
+        custom_element.setAttribute(attr_tag, attr_name)
+        custom_element.innerHTML = value
+        image_space3[0].append(custom_element)
+        var img = document.createElement("img");
+        img.src = "icons&images/RedX.png";
+        var src = custom_element
+        src.append(img);
+      }*/
+
+    }
+    this.#loading = false;
+    
+    /*
     //Check class of image. if "real" then return true, else false
     if (element instanceof Real)
     {
@@ -114,21 +192,25 @@ class ScanObject
     {
       return true;
       //Change tooltip?
-    }
+    }*/
   }
-  */
+  
 
+  /*
   checkifrealprototype()
   {
-    if (this.#scanElement.className == "real") this.pass = true;
+    let percentage = Math.round(Math.random()*100);
 
-    if (this.pass) {
-      this.#percentage = Math.floor(Math.random() * 20) + 80// random integer 80 to 99
+    if (percentage >= 80) {
+      this.pass = true;
+      alert("It Passed! " + percentage)
     } else {
-      this.#percentage = Math.floor(Math.random() * 80) // random integer 0 to 79
+      this.pass = false;
+      alert("It failed! " + percentage)
     }
     this.#loading = false;
   }
+  */
 }
 
 let scanList = [];
@@ -142,7 +224,7 @@ $(window).on('mouseenter', function(e1)
 {
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
-    parent_element = document.elementFromPoint(x, y).parentNode;
+    parent_element = element.parentNode;
     if (element instanceof HTMLImageElement)
     {
     	isImage = true;
@@ -171,14 +253,15 @@ $(this).on('keypress', function(event) {
       let src = element.src
       scanList.push(new ScanObject(src, element))
       console.log(parent_element.className)
-      if (parent_element.className == "image_space1") {
-        console.log(image_space1)
-        Create_Custom_Element1(
-          "div",
-          "id",
-          "js-image-element1",
-          "",
-        )
+
+      Create_Custom_Element(
+        "div",
+        "id",
+        "js-image-element1",
+        "",
+      )
+
+      /*
       } else if (parent_element.className == "image_space2") {
         console.log(image_space2)
         Create_Custom_Element2(
@@ -204,6 +287,7 @@ $(this).on('keypress', function(event) {
           "",
         )
       }
+      */
     //alert('Its an image!');
     //checkIfReal(element);
   }
