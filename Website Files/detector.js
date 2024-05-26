@@ -54,6 +54,13 @@ function Create_Custom_Element(tag, attr_tag, attr_name, value) {
 
   img.src = s;
 
+  //Change size and set position of image to the top right of image.
+  img.style.width = "50px";
+  img.style.height = "50px";
+  img.style.position = "absolute"; //position absolute aligns image relative with nearest ancestor?
+  img.style.top = "0";
+  img.style.right = "0";
+
   img.setAttribute(attr_tag, attr_name)
   //custom_element.append(img);
   var src = custom_element
@@ -130,54 +137,32 @@ class ScanObject
   
   checkIfReal(src)
   {
+    //Create element variable thingymabob for image
+    var img = document.createElement("img");
 
+    //'Percentage' of how real image could be
     let percentage = Math.round(Math.random()*100);
 
     if (percentage >= 80) {
       this.pass = true;
       alert("It Passed! " + percentage)
-
-      /*
-      let custom_element = document.createElement(tag)
-      custom_element.setAttribute(attr_tag, attr_name)
-      custom_element.innerHTML = value
-      image_space1[0].append(custom_element)
-      var img = document.createElement("img");
-      img.src = "icons&images/GreenCheckMark.png";
-      img.setAttribute(attr_tag, attr_name)
-      var src = custom_element
-      src.append(img);
-      */
-
+      img.src = chrome.runtime.getURL('/icons&images/GreenCheckmark.png')
     } else {
       this.pass = false;
       alert("It failed! " + percentage)
-
-
-      /*
-      const custom_element = document.createElement("div") // tag
-      custom_element.setAttribute("class", "detector_element") // attr_tag, attr_name
-      custom_element.innerHTML = "" // value
-
-      image_space2[0].append(custom_element) // the image that we have to put the checkmark or X over
-
-      var img = document.createElement("img");
-      img.src = "icons&images/RedX.png";
-      custom_element.append(img);*/
-
-      /*
-      function Create_Custom_Element3(tag, attr_tag, attr_name, value) {
-        const custom_element = document.createElement(tag)
-        custom_element.setAttribute(attr_tag, attr_name)
-        custom_element.innerHTML = value
-        image_space3[0].append(custom_element)
-        var img = document.createElement("img");
-        img.src = "icons&images/RedX.png";
-        var src = custom_element
-        src.append(img);
-      }*/
-
+      img.src = chrome.runtime.getURL('/icons&images/RedX.png')
     }
+  
+    //Change size and set position of image to the top right of image.
+    img.style.width = "50px";
+    img.style.height = "50px";
+    img.style.position = "absolute"; //position absolute aligns image relative with nearest ancestor?
+    img.style.top = "0";
+    img.style.right = "0";
+  
+    //Apply image to parent element
+    parent_element.append(img);
+
     this.#loading = false;
     
     /*
@@ -223,7 +208,8 @@ $(window).on('mouseenter', function(e1)
     var x = e1.clientX, y = e1.clientY;
     element = document.elementFromPoint(x, y);
     parent_element = element.parentNode;
-    if (element instanceof HTMLImageElement)
+    //If imageElement and isnt just a small image like a logo
+    if (element instanceof HTMLImageElement && element.naturalWidth > 100 && element.naturalHeight > 100)
     {
     	isImage = true;
     }
@@ -252,12 +238,14 @@ $(this).on('keypress', function(event) {
       scanList.push(new ScanObject(src, element))
       console.log(parent_element.className)
 
+      /*
       Create_Custom_Element(
         "div",
         "id",
         "js-image-element1",
         "",
       )
+      */
 
       /*
       } else if (parent_element.className == "image_space2") {
