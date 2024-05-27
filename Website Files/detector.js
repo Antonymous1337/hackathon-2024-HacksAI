@@ -9,12 +9,15 @@ const site = window.location.hostname;
 
 //const Add_Custom_Style = css => document.head.appendChild(document.createElement("style")).innerHTML   
 
+//Creates style element, set innerHTML to css string, then append.
+//Not sure what exactly that middle part means but uh it works yay huahahwhw
 const Add_Custom_Style = css => {
   const style = document.createElement("style");
   style.innerHTML = css;
   document.head.appendChild(style);
 }
 
+//Adds onhover class thingymabob wooooot 
 Add_Custom_Style(`
   .expand-on-hover:hover {
     transform: scale(1.2);
