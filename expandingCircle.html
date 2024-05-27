@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Circle Test</title>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 10px;
+        }
+
+        .circle {
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            transition: 0.5s ease-in-out;
+            float: right;
+
+            display: flex;
+        }
+
+        .circle:hover {
+            width: 400px;
+            height: 130px;
+            border-radius: 1em;
+        }
+
+        .circle:hover .content-closed {
+            animation: trulyHide 0.3s both,
+                       disappear 0.3s both;
+        }
+
+        .content-closed {
+            position: absolute;
+            top: 23px;
+            right: 37px;
+            color: white;
+            font-size: 4rem;
+            user-select: none;
+        }
+
+        .content-opened {
+            color: white;
+            display: none;
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        .circle:hover .content-opened {
+            display: inline;
+            opacity: 0;
+            animation: disappear 0.2s 0.5s reverse both ease-in-out;
+        }
+
+        @keyframes trulyHide {
+            0% {display: initial;}
+            99% {display: initial;}
+            100% {display: none;}
+        }
+
+        @keyframes disappear {
+            0% {opacity: 100%;}
+            100% {opacity: 0%;}
+        }
+    </style>
+
+</head>
+<body>
+    <div class="circle">
+        <p class="content-closed">R</p>
+        <p class="content-opened">Chances of being fake: <strong>2%</strong> <br><br><br>
+        This means you can likely trust that this image is real. But still be careful anyway!</p>
+    </div>
+</body>
+</html>

@@ -159,11 +159,11 @@ class ScanObject
     if (percentage >= 80) {
       this.pass = true;
       alert("It Passed! " + percentage)
-      img.src = chrome.runtime.getURL('/icons&images/GreenCheckmark.png')
+      img.src = chrome.runtime.getURL('/icons&images/GreenReal.png')
     } else {
       this.pass = false;
       alert("It failed! " + percentage)
-      img.src = chrome.runtime.getURL('/icons&images/RedX.png')
+      img.src = chrome.runtime.getURL('/icons&images/RedFake.png')
     }
   
     //Adds expand on hover to image
