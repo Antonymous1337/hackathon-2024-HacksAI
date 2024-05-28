@@ -1,0 +1,44 @@
+:root {
+    --color-primary: #0f181a;
+    --color-secondary: rgba(255, 255, 255, 0.86);
+    --br-sm-2: 14px;
+    --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+  }
+
+/* General Page Setup */ 
+html  {
+    width: 400px;
+    height: 500px;
+}
+body {
+    padding:0px 10px 10px 10px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    background-image: url('icons&images/background2.png');
+    background-size: contain;
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+div {
+    display: inline;
+}
+
+.green {
+    color: greenyellow;
+}
+
+.red {
+    color: red;
+}
+
+.disclaimer {
+    font-size: 16px;
+}
