@@ -1,13 +1,4 @@
 const site = window.location.hostname;
-/*
-    "web_accessable_resources": [
-        "resources": ["icons&images/GreenCheckmark.png"]
-    ],
-*/ 
-
-/* Miro's HTML / CSS Injecting */
-
-//const Add_Custom_Style = css => document.head.appendChild(document.createElement("style")).innerHTML   
 
 //Creates style element, set innerHTML to css string, then append.
 //Not sure what exactly that middle part means but uh it works yay huahahwhw
@@ -19,114 +10,81 @@ const Add_Custom_Style = css => {
 
 //Adds onhover class thingymabob wooooot 
 Add_Custom_Style(`
-  .expand-on-hover:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s ease-in-out;
-  }
+.expand-on-hover:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+.circle {
+  background-color: green;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out;
+  float: right;
+  display: flex;
+}
+.circle:hover {
+  width: 300px;
+  height: 130px;
+  border-radius: 1em;
+}
+.circle:hover .content-closed {
+  animation: trulyHide 0.3s both,
+             disappear 0.3s both;
+}
+.content-closed {
+  position: absolute;
+  top: -40px;
+  right: 12px;
+  color: white;
+  font-size: 2.5rem;
+  user-select: none;
+}
+.content-opened {
+  color: white;
+  display: none;
+  margin: 10px;
+  font-size: 15px;
+}
+.circle:hover .content-opened {
+  display: inline;
+  opacity: 0;
+  animation: disappear 0.2s 0.5s reverse both ease-in-out;
+}
+button {
+  display: none;
+  position: absolute;
+  right: 0px;
+  color: white;
+  background:green;
+  font-weight: bold;
+  padding: 0px;
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  border-top-right-radius: 14px;
+  border: none;
+  z-index: 1;
+  text-align: center;
+}
+.circle:hover button {
+  display: inline;
+  opacity: 0;
+  animation: disappear 0.2s 0.5s reverse both ease-in-out;
+}
+button:hover {
+  color:grey;
+}
+@keyframes trulyHide {
+  0% {display: initial;}
+  99% {display: initial;}
+  100% {display: none;}
+}
+@keyframes disappear {
+  0% {opacity: 100%;}
+  100% {opacity: 0%;}
+}
 `);
-
-/*
-Add_Custom_Style(`
-
-    img {
-      width: 10px;
-    }
-    #js-image-element1{
-      position: relative;
-      display: grid;  
-      place-items: right;
-    }
-    #js-image-element2{
-      position: relative;
-      display: grid;
-      place-items: right;
-    }
-    #js-image-element3{
-      position: relative;
-      display: grid;
-      place-items: right;
-    }
-    #js-image-element4{
-      position: relative;
-      display: grid;
-      place-items: right;
-    }
-`)*/
-/*
-function Create_Custom_Element(tag, attr_tag, attr_name, value) {
-  
-  const custom_element = document.createElement(tag)
-  custom_element.setAttribute(attr_tag, attr_name)
-  custom_element.innerHTML = value
-  parent_element.append(custom_element)
-  var img = document.createElement("img");
-
-  let s = chrome.runtime.getURL('/icons&images/GreenCheckmark.png')
-
-  console.log(s);
-
-  img.src = s;
-
-  //Change size and set position of image to the top right of image.
-  img.style.width = "50px";
-  img.style.height = "50px";
-  img.style.position = "absolute"; //position absolute aligns image relative with nearest ancestor?
-  img.style.top = "0";
-  img.style.right = "0";
-
-  img.setAttribute(attr_tag, attr_name)
-  //custom_element.append(img);
-  var src = custom_element
-  src.append(img);
-}
-*/
-/*
-const image_space1 = document.getElementsByClassName("image_space1")
-const image_space2 = document.getElementsByClassName("image_space2")
-const image_space3 = document.getElementsByClassName("image_space3")
-const image_space4 = document.getElementsByClassName("image_space4")
-
-function Create_Custom_Element1(tag, attr_tag, attr_name, value) {
-  const custom_element = document.createElement(tag)
-  custom_element.setAttribute(attr_tag, attr_name)
-  custom_element.innerHTML = value
-  image_space1[0].append(custom_element)
-  var img = document.createElement("img");
-  img.src = "icons&images/GreenCheckMark.png";
-  img.setAttribute(attr_tag, attr_name)
-  var src = custom_element
-  src.append(img);
-}
-function Create_Custom_Element2(tag, attr_tag, attr_name, value) {
-  const custom_element = document.createElement(tag)
-  custom_element.setAttribute(attr_tag, attr_name)
-  custom_element.innerHTML = value
-  image_space2[0].append(custom_element)
-  var img = document.createElement("img");
-  img.src = "icons&images/RedX.png";
-  var src = custom_element
-  src.append(img);
-}
-function Create_Custom_Element3(tag, attr_tag, attr_name, value) {
-  const custom_element = document.createElement(tag)
-  custom_element.setAttribute(attr_tag, attr_name)
-  custom_element.innerHTML = value
-  image_space3[0].append(custom_element)
-  var img = document.createElement("img");
-  img.src = "icons&images/RedX.png";
-  var src = custom_element
-  src.append(img);
-}
-function Create_Custom_Element4(tag, attr_tag, attr_name, value) {
-  const custom_element = document.createElement(tag)
-  custom_element.setAttribute(attr_tag, attr_name)
-  custom_element.innerHTML = value
-  image_space4[0].append(custom_element)
-  var img = document.createElement("img");
-  img.src = "icons&images/GreenCheckMark.png";
-  var src = custom_element
-  src.append(img);
-}*/
 
 class ScanObject
 {
@@ -147,51 +105,61 @@ class ScanObject
     //private setTooltip()
   }
 
-  
   checkIfReal(src)
   {
-    //Create element variable thingymabob for image
-    var img = document.createElement("img");
-
-    //'Percentage' of how real image could be
-    let percentage = Math.round(Math.random()*100);
-
-    if (percentage >= 80) {
-      this.pass = true;
-      alert("It Passed! " + percentage)
-      img.src = chrome.runtime.getURL('/icons&images/GreenReal.png')
-    } else {
-      this.pass = false;
-      alert("It failed! " + percentage)
-      img.src = chrome.runtime.getURL('/icons&images/RedFake.png')
-    }
+  // Create a wrapper div and apply the circle class
+  var wrapper = document.createElement("div");
+  wrapper.className = "circle";
+  wrapper.style.position = "absolute";
+  wrapper.style.top = "0";
+  wrapper.style.right = "0";
   
-    //Adds expand on hover to image
-    img.className = "expand-on-hover";
+  //Closed and open
+  var contentOpened = document.createElement("p");
+  contentOpened.className = "content-opened";
+  var contentClosed = document.createElement("p");
+  contentClosed.className = "content-closed";
+  
+  //Exit button
+  var button = document.createElement("button");
+  button.className = "button-open";
+  button.onclick = function(event) {
+    event.preventDefault(); 
+    this.parentElement.remove(); };
+  button.textContent = "X";
 
-    //Change size and set position of image to the top right of image.
-    img.style.width = "50px";
-    img.style.height = "50px";
-    img.style.position = "absolute"; //position absolute aligns image relative with nearest ancestor?
-    img.style.top = "0";
-    img.style.right = "0";
+  // 'Percentage' of how real image could be
+  let percentage = Math.round(Math.random()*100);
 
-    /*
-    //Domain Expansion: Add functions to img that trigger on mouseover/out to expand widtch and hegths
-    img.onmouseover = function() {
-      this.style.width = "70px";
-      this.style.height = "70px";
-    }
-    img.onmouseout = function() {
-      this.style.width = "50px";
-      this.style.height = "50px";
-    }
-    */
+  if (percentage >= 80) {
+    this.pass = true;
+    alert("It Passed! " + percentage)
+    //Stuff to set text and color to match result
+    button.style.background = "green";
+    wrapper.style.backgroundColor = "green";
+    contentClosed.textContent = "R";
+    contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+    This means you can likely trust that this image is real. But still be careful anyway!`;
+  } else {
+    this.pass = false;
+    alert("It failed! " + percentage)
+    //Stuff to set text and color to match result
+    button.style.background = "red";
+    wrapper.style.backgroundColor = "red";
+    contentClosed.textContent = "F";
+    contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+    This means the image is suspicious, and should be treated carefully!`;
+  }
+  // Append the text elements to the wrapper
+  wrapper.appendChild(contentClosed);
+  wrapper.appendChild(contentOpened);
 
-    //Apply image to parent element
-    parent_element.append(img);
+  // Append the button to the wrapper
+  wrapper.appendChild(button);
+  // Append the wrapper to the parent element
+  parent_element.append(wrapper);
 
-    this.#loading = false;
+  this.#loading = false;
     
     /*
     //Check class of image. if "real" then return true, else false
@@ -270,43 +238,5 @@ $(this).on('keypress', function(event) {
       scanList.push(new ScanObject(src, element))
       console.log(parent_element.className)
 
-      /*
-      Create_Custom_Element(
-        "div",
-        "id",
-        "js-image-element1",
-        "",
-      )
-      */
-
-      /*
-      } else if (parent_element.className == "image_space2") {
-        console.log(image_space2)
-        Create_Custom_Element2(
-          "div",
-          "id",
-          "js-image-element2",
-          "",
-        )
-      } else if (parent_element.className == "image_space3") {
-        console.log(image_space3)
-        Create_Custom_Element3(
-          "div",
-          "id",
-          "js-image-element3",
-          "",
-        )
-      } else if (parent_element.className == "image_space4") {
-        console.log(image_space4)
-        Create_Custom_Element4(
-          "div",
-          "id",
-          "js-image-element4",
-          "",
-        )
-      }
-      */
-    //alert('Its an image!');
-    //checkIfReal(element);
   }
 })
