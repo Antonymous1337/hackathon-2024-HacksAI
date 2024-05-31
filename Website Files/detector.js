@@ -84,11 +84,18 @@ button:hover {
   0% {opacity: 100%;}
   100% {opacity: 0%;}
 }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); 
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 `);
 
 class ScanObject
 {
-
   #loading = true
   #pass = false
   #percentage = -1
@@ -107,59 +114,28 @@ class ScanObject
 
   checkIfReal(src)
   {
-  // Create a wrapper div and apply the circle class
-  var wrapper = document.createElement("div");
-  wrapper.className = "circle";
-  wrapper.style.position = "absolute";
-  wrapper.style.top = "0";
-  wrapper.style.right = "0";
-  
-  //Closed and open
-  var contentOpened = document.createElement("p");
-  contentOpened.className = "content-opened";
-  var contentClosed = document.createElement("p");
-  contentClosed.className = "content-closed";
-  
-  //Exit button
-  var button = document.createElement("button");
-  button.className = "button-open";
-  button.onclick = function(event) {
-    event.preventDefault(); 
-    this.parentElement.remove(); };
-  button.textContent = "X";
+    //Start loading Icon a spinnin round
+    var loadingIcon = document.createElement("img");
+    loadingIcon.src = chrome.runtime.getURL('/icons&images/GreyLoad.png')
+    //Change size and set position of image to the top right.
+    loadingIcon .style.width = "50px";
+    loadingIcon .style.height = "50px";
+    loadingIcon .style.position = "absolute"; //position absolute aligns image relative with nearest ancestor?
+    loadingIcon .style.top = "0";
+    loadingIcon .style.right = "0";
+    loadingIcon.style.animation = "rotate 2s infinite ease-in-out"
+    parent_element.append(loadingIcon);
+    
+    // 'Percentage' of how real image could be - Currently random for testing purposes
+    let percentage = Math.round(Math.random()*100);
 
-  // 'Percentage' of how real image could be
-  let percentage = Math.round(Math.random()*100);
+    // Timer so you can check out the loading icon. Can probably be removed once ai is implimented.
+    setTimeout(() => {
+      parent_element.append(this.setIcon(percentage));
+      parent_element.removeChild(loadingIcon);
+    }, 2000); // 2000 milliseconds = 2 seconds
 
-  if (percentage >= 80) {
-    this.pass = true;
-    alert("It Passed! " + percentage)
-    //Stuff to set text and color to match result
-    button.style.background = "green";
-    wrapper.style.backgroundColor = "green";
-    contentClosed.textContent = "R";
-    contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
-    This means you can likely trust that this image is real. But still be careful anyway!`;
-  } else {
-    this.pass = false;
-    alert("It failed! " + percentage)
-    //Stuff to set text and color to match result
-    button.style.background = "red";
-    wrapper.style.backgroundColor = "red";
-    contentClosed.textContent = "F";
-    contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
-    This means the image is suspicious, and should be treated carefully!`;
-  }
-  // Append the text elements to the wrapper
-  wrapper.appendChild(contentClosed);
-  wrapper.appendChild(contentOpened);
-
-  // Append the button to the wrapper
-  wrapper.appendChild(button);
-  // Append the wrapper to the parent element
-  parent_element.append(wrapper);
-
-  this.#loading = false;
+    this.#loading = false;
     
     /*
     //Check class of image. if "real" then return true, else false
@@ -173,6 +149,60 @@ class ScanObject
       return true;
       //Change tooltip?
     }*/
+  }
+
+  //Everything to create and set the green or red outcome icon based on the percentage of it being real
+  setIcon(percentage)
+  {
+      // Create a wrapper div and apply the circle class
+      var wrapper = document.createElement("div");
+      wrapper.className = "circle";
+      wrapper.style.position = "absolute";
+      wrapper.style.top = "0";
+      wrapper.style.right = "0";
+
+      //Closed and open content
+      var contentOpened = document.createElement("p");
+      contentOpened.className = "content-opened";
+      var contentClosed = document.createElement("p");
+      contentClosed.className = "content-closed";
+        
+      //Exit button
+      var button = document.createElement("button");
+      button.className = "button-open";
+      button.onclick = function(event) {
+        event.preventDefault(); 
+        this.parentElement.remove(); };
+      button.textContent = "X";
+    
+      //Check chance of being real or fake
+      if (percentage >= 80) {
+        this.pass = true;
+        alert("It Passed! " + percentage)
+        //Stuff to set text and color to match result
+        button.style.background = "green";
+        wrapper.style.backgroundColor = "green";
+        contentClosed.textContent = "R";
+        contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+        This means you can likely trust that this image is real. But still be careful anyway!`;
+      } else {
+        this.pass = false;
+        alert("It failed! " + percentage)
+        //Stuff to set text and color to match result
+        button.style.background = "red";
+        wrapper.style.backgroundColor = "red";
+        contentClosed.textContent = "F";
+        contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+        This means the image is suspicious, and should be treated carefully!`;
+      }
+      // Append the text elements to the wrapper
+      wrapper.appendChild(contentClosed);
+      wrapper.appendChild(contentOpened);
+    
+      // Append the button to the wrapper
+      wrapper.appendChild(button);
+      // Append the wrapper to the parent element
+      return wrapper;
   }
   
 
@@ -201,8 +231,8 @@ var parent_element;
 
 $(window).on('mouseenter', function(e1)
 {
-    var x = e1.clientX, y = e1.clientY;
-    element = document.elementFromPoint(x, y);
+    var x = e1.clientX, y = e1.clientY; //Cords of mouse pointer
+    element = document.elementFromPoint(x, y); //Returns topmost element from position
     if (element) //Make sure its not null to fix error with trying to get parent of null element
     {
       parent_element = element.parentNode;
