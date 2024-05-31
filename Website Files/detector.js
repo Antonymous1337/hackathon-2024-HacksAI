@@ -100,12 +100,14 @@ class ScanObject
   #pass = false
   #percentage = -1
   #scanElement = undefined
-  constructor(src, element)
+  #scanElementParent = undefined
+  constructor(src, element, parentElement)
   {
     this.#loading = true;
     this.#pass = false;
     this.#percentage = -1;
     this.#scanElement = element
+    this.#scanElementParent = parentElement
 
     this.checkIfReal(src)
     //this.checkifrealprototype()
@@ -124,15 +126,15 @@ class ScanObject
     loadingIcon .style.top = "0";
     loadingIcon .style.right = "0";
     loadingIcon.style.animation = "rotate 2s infinite ease-in-out"
-    parent_element.append(loadingIcon);
+    this.#scanElementParent.append(loadingIcon);
     
     // 'Percentage' of how real image could be - Currently random for testing purposes
     let percentage = Math.round(Math.random()*100);
 
     // Timer so you can check out the loading icon. Can probably be removed once ai is implimented.
     setTimeout(() => {
-      parent_element.append(this.setIcon(percentage));
-      parent_element.removeChild(loadingIcon);
+      this.#scanElementParent.append(this.setIcon(percentage));
+      this.#scanElementParent.removeChild(loadingIcon);
     }, 2000); // 2000 milliseconds = 2 seconds
 
     this.#loading = false;
@@ -265,7 +267,7 @@ $(this).on('keypress', function(event) {
 
       //get image src attribute
       let src = element.src
-      scanList.push(new ScanObject(src, element))
+      scanList.push(new ScanObject(src, element, parent_element))
       console.log(parent_element.className)
 
   }
