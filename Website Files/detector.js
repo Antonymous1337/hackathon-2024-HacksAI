@@ -24,7 +24,7 @@ Add_Custom_Style(`
   display: flex;
 }
 .circle:hover {
-  width: 300px;
+  width: 250px;
   height: 130px;
   border-radius: 1em;
 }
@@ -34,8 +34,9 @@ Add_Custom_Style(`
 }
 .content-closed {
   position: absolute;
-  top: -40px;
-  right: 12px;
+  top: -25%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   font-size: 2.5rem;
   user-select: none;
@@ -126,6 +127,7 @@ class ScanObject
     loadingIcon .style.top = "0";
     loadingIcon .style.right = "0";
     loadingIcon.style.animation = "rotate 2s infinite ease-in-out"
+
     this.#scanElementParent.append(loadingIcon);
     
     // 'Percentage' of how real image could be - Currently random for testing purposes
