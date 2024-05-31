@@ -53,10 +53,10 @@ Add_Custom_Style(`
   opacity: 0;
   animation: disappear 0.2s 0.5s reverse both ease-in-out;
 }
-button {
+detectorExitButton {
   display: none;
   position: absolute;
-  right: 0px;
+  right: 0%;
   color: white;
   background:green;
   font-weight: bold;
@@ -68,13 +68,14 @@ button {
   border: none;
   z-index: 1;
   text-align: center;
+  line-height: normal;
 }
-.circle:hover button {
+.circle:hover detectorExitButton {
   display: inline;
   opacity: 0;
   animation: disappear 0.2s 0.5s reverse both ease-in-out;
 }
-button:hover {
+detectorExitButton:hover {
   color:grey;
 }
 @keyframes trulyHide {
@@ -173,8 +174,8 @@ class ScanObject
       contentClosed.className = "content-closed";
         
       //Exit button
-      var button = document.createElement("button");
-      button.className = "button-open";
+      var button = document.createElement("detectorExitButton");
+      button.className = "detectorExitButton-open";
       button.onclick = function(event) {
         event.preventDefault(); 
         this.parentElement.remove(); };
