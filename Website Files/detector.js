@@ -132,6 +132,16 @@ class ScanObject
     // 'Percentage' of how real image could be - Currently random for testing purposes
     let percentage = Math.round(Math.random()*100);
 
+    /*
+    const spawner = require('child_process').spawn;
+    const data_to_pass_in = "Test";
+    console.log("Data sent to python script:", data_to_pass_in);
+    const python_process = spawner('python', ['./app.py', JSON.stringify(data_to_pass_in)]);
+    python_process.stdout.on('data', (data) => {
+      console.log('Data received from python script:', JSON.parse(data.toString()));
+    })
+    */
+
     // Timer so you can check out the loading icon. Can probably be removed once ai is implimented.
     setTimeout(() => {
       this.#scanElementParent.append(this.setIcon(percentage));
@@ -179,7 +189,7 @@ class ScanObject
       button.textContent = "X";
     
       //Check chance of being real or fake
-      if (percentage >= 80) {
+      if (percentage >= 50) {
         this.pass = true;
         //alert("It Passed! " + percentage)
         //Stuff to set text and color to match result
@@ -188,7 +198,7 @@ class ScanObject
         button.onmouseover = function() { this.style.color = "green"; this.style.background = "white"; };
         button.onmouseout = function() { this.style.color = "white"; this.style.background = "green"; };
         contentClosed.textContent = "R";
-        contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+        contentOpened.innerHTML = `Chances of being real: <strong>${percentage}%</strong> <br><br><br>
         This means you can likely trust that this image is real. But still be careful anyway!`;
       } else {
         this.pass = false;
@@ -199,7 +209,7 @@ class ScanObject
         button.onmouseover = function() { this.style.color = "red"; this.style.background = "white"; };
         button.onmouseout = function() { this.style.color = "white"; this.style.background = "red"; };
         contentClosed.textContent = "F";
-        contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
+        contentOpened.innerHTML = `Chances of being real: <strong>${percentage}%</strong> <br><br><br>
         This means the image is suspicious, and should be treated carefully!`;
       }
       // Append the text elements to the wrapper
