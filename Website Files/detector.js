@@ -183,7 +183,7 @@ class ScanObject
       //Check chance of being real or fake
       if (percentage >= 80) {
         this.pass = true;
-        alert("It Passed! " + percentage)
+        //alert("It Passed! " + percentage)
         //Stuff to set text and color to match result
         button.style.background = "green";
         wrapper.style.backgroundColor = "green";
@@ -192,7 +192,7 @@ class ScanObject
         This means you can likely trust that this image is real. But still be careful anyway!`;
       } else {
         this.pass = false;
-        alert("It failed! " + percentage)
+        //alert("It failed! " + percentage)
         //Stuff to set text and color to match result
         button.style.background = "red";
         wrapper.style.backgroundColor = "red";
