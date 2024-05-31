@@ -75,9 +75,6 @@ detectorExitButton {
   opacity: 0;
   animation: disappear 0.2s 0.5s reverse both ease-in-out;
 }
-detectorExitButton:hover {
-  color:grey;
-}
 @keyframes trulyHide {
   0% {display: initial;}
   99% {display: initial;}
@@ -188,6 +185,8 @@ class ScanObject
         //Stuff to set text and color to match result
         button.style.background = "green";
         wrapper.style.backgroundColor = "green";
+        button.onmouseover = function() { this.style.color = "green"; this.style.background = "white"; };
+        button.onmouseout = function() { this.style.color = "white"; this.style.background = "green"; };
         contentClosed.textContent = "R";
         contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
         This means you can likely trust that this image is real. But still be careful anyway!`;
@@ -197,6 +196,8 @@ class ScanObject
         //Stuff to set text and color to match result
         button.style.background = "red";
         wrapper.style.backgroundColor = "red";
+        button.onmouseover = function() { this.style.color = "red"; this.style.background = "white"; };
+        button.onmouseout = function() { this.style.color = "white"; this.style.background = "red"; };
         contentClosed.textContent = "F";
         contentOpened.innerHTML = `Chances of being fake: <strong>${percentage}%</strong> <br><br><br>
         This means the image is suspicious, and should be treated carefully!`;
