@@ -46,6 +46,7 @@ Add_Custom_Style(`
   display: none;
   margin: 10px;
   font-size: 15px;
+  line-height: normal;
 }
 .circle:hover .content-opened {
   display: inline;
