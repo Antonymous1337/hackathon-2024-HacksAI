@@ -129,11 +129,26 @@ class ScanObject
 
     this.#scanElementParent.append(loadingIcon);
     
-    // 'Percentage' of how real image could be - Currently random for testing purposes
-    let percentage = Math.round(Math.random()*100);
 
     // Timer so you can check out the loading icon. Can probably be removed once ai is implimented.
     setTimeout(() => {
+    //Check class of image for demo.
+    if (this.#scanElement.className == "real")
+      {
+        let percentage = Math.round(Math.random()*21) + 80;
+        this.#scanElementParent.append(this.setIcon(percentage));
+        this.#scanElementParent.removeChild(loadingIcon); 
+        return;
+      }
+      else if (this.#scanElement.className == "fake")
+      {
+        let percentage = Math.round(Math.random()*80);
+        this.#scanElementParent.append(this.setIcon(percentage));
+        this.#scanElementParent.removeChild(loadingIcon);
+        return;
+      }
+      //Random number of how "real" a image appears to be.
+      let percentage = Math.round(Math.random()*100);
       this.#scanElementParent.append(this.setIcon(percentage));
       this.#scanElementParent.removeChild(loadingIcon);
     }, 2000); // 2000 milliseconds = 2 seconds
