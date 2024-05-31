@@ -45,7 +45,7 @@ Add_Custom_Style(`
   color: white;
   display: none;
   margin: 10px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: normal;
 }
 .circle:hover .content-opened {
